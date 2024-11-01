@@ -15,11 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: [dev, latest, '']
+        version: [stable, latest, '', dev]
 
     steps:
       - name: Determine version
-        id: vars
+        id: version_tag
         run: |
           ver="${{ matrix.version }}"
           [ -z "$ver" ] && ver="${{ github.event.inputs.version }}"
