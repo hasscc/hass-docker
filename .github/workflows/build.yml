@@ -25,6 +25,7 @@ jobs:
           [ -z "$ver" ] && ver="${{ github.event.inputs.version }}"
           [ -z "$ver" ] && ver="$(date +%Y).$(date +%-m)"
           echo "VERSION=$ver" >> $GITHUB_ENV
+          echo "VERSION=$ver"
 
       - name: Checkout code
         uses: actions/checkout@v4

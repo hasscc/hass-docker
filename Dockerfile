@@ -1,5 +1,5 @@
 ARG VERSION
-FROM homeassistant/home-assistant:VERSION
+FROM homeassistant/home-assistant:${BUILD_FROM}
 
 RUN \
   mkdir /hacs && cd /hacs && \
