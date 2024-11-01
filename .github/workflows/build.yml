@@ -18,6 +18,14 @@ jobs:
         version: [dev, latest, '']
 
     steps:
+      - name: Determine version
+        id: vars
+        run: |
+          ver="${{ matrix.version }}"
+          [ -z "$ver" ] && ver="${{ github.event.inputs.version }}"
+          [ -z "$ver" ] && ver="$(date +%Y).$(date +%-m)"
+          echo "VERSION=$ver" >> $GITHUB_ENV
+
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -32,14 +40,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Determine version
-        id: vars
-        run: |
-          ver="${{ matrix.version }}"
-          [ -z "$ver" ] && ver="${{ github.event.inputs.version }}"
-          [ -z "$ver" ] && ver="$(date +%Y).$(date +%-m)"
-          echo "VERSION=$ver" >> $GITHUB_ENV
 
       - name: Build and push
         uses: docker/build-push-action@v5
