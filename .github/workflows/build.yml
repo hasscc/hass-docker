@@ -36,14 +36,10 @@ jobs:
       - name: Determine version
         id: vars
         run: |
-          if [ "${{ matrix.version }}" != "" ]; then
-            echo "VERSION=${{ matrix.version }}" >> $GITHUB_ENV
-          elif [ "${{ github.event.inputs.version }}" != "" ]; then
-            echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
-          else
-            echo "VERSION=$(date +%Y).$(date +%-m)" >> $GITHUB_ENV
-          fi
-          echo "VERSION=${{ env.VERSION }}"
+          ver="${{ matrix.version }}"
+          [ -z "$ver" ] && ver="${{ github.event.inputs.version }}"
+          [ -z "$ver" ] && ver="$(date +%Y).$(date +%-m)"
+          echo "VERSION=$ver" >> $GITHUB_ENV
 
       - name: Build and push
         uses: docker/build-push-action@v5
