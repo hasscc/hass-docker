@@ -10,6 +10,7 @@ RUN \
   DOMAIN=tianqi bash get && \
   DOMAIN=xiaomi_gateway3 bash get && \
   DOMAIN=ha_file_explorer bash get && \
+  DOMAIN=ai_conversation bash get && \
   cd /etc/services.d && \
   mkdir -p hacs && \
   touch hacs/run && \
