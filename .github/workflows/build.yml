@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Specify a custom version'
+        description: Specify a custom version
         required: false
         default: ''
   schedule:
@@ -35,6 +35,23 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.HACN_USERNAME }}
+          password: ${{ secrets.HACN_PASSWORD }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ secrets.HACN_USERNAME }}/hacn:${{ env.VERSION }}
+          build-args: |
+            VERSION=${{ env.VERSION }}
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
