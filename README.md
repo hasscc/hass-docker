@@ -8,6 +8,7 @@
 - [XiaomiGateway3](https://github.com/AlexxIT/XiaomiGateway3)
 - [天气预报](https://github.com/hasscc/tianqi)
 - [文件管理](https://github.com/shaonianzhentan/ha_file_explorer)
+- [AI Conversation Agent](https://github.com/hasscc/ai-conversation) _(2024.9+)_
 
 
 ### 命令安装
@@ -43,4 +44,5 @@ services:
 ```
 
 ### 相关链接
+- [DockerHub](https://hub.docker.com/r/hacn/hacn)
 - [Dockerfile](https://github.com/hasscc/hass-docker/blob/main/Dockerfile)
