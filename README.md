@@ -1,10 +1,10 @@
 ### 预装集成
 > 本镜像每日更新，可用tag有`stable`、`latest`、`dev`及月度版本如`2024.9`
 >
-> 预装集成仅针对新安装的HA，如已有`custom_components`目录则不会执行预装。
+> HA启动时会逐个检测是否安装以下集成，如果没有则自动安装，已安装不会覆盖
 
 - [HACS极速版](https://hacs.vip)
-- [Xiaomi Miot Auto](https://github.com/al-one/hass-xiaomi-miot)
+- [Xiaomi Miot](https://github.com/al-one/hass-xiaomi-miot)
 - [Xiaomi Home](https://github.com/XiaoMi/ha_xiaomi_home) _(2024.11+)_
 - [XiaomiGateway3](https://github.com/AlexxIT/XiaomiGateway3)
 - [天气预报](https://github.com/hasscc/tianqi)
@@ -41,7 +41,7 @@ services:
       - /run/dbus:/run/dbus:ro
     environment:
       - TZ=Asia/Shanghai
-      - ALWAYS_INSTALL=true # 默认为true，每次启动都会逐个安装预装集成
+      - ALWAYS_INSTALL=true # 默认为true，每次启动都会逐个预装，否则仅全新HA才会预装
     restart: unless-stopped
     privileged: true
     network_mode: host
