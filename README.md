@@ -5,7 +5,7 @@
 
 - [HACS极速版](https://hacs.vip)
 - [Xiaomi Miot Auto](https://github.com/al-one/hass-xiaomi-miot)
-- [Xiaomi Home](https://github.com/XiaoMi/ha_xiaomi_home)
+- [Xiaomi Home](https://github.com/XiaoMi/ha_xiaomi_home) _(2024.11+)_
 - [XiaomiGateway3](https://github.com/AlexxIT/XiaomiGateway3)
 - [天气预报](https://github.com/hasscc/tianqi)
 - [文件管理](https://github.com/shaonianzhentan/ha_file_explorer)
