@@ -8,6 +8,7 @@ if [ "$ALWAYS_INSTALL" = "true" ]; then
     cd custom_components
     [ ! -d hacs ] && cp -rf /hacs/custom_components/hacs ./ && bashio::log.info "Copied hacs"
     [ ! -d xiaomi_miot ] && cp -rf /hacs/custom_components/xiaomi_miot ./ && bashio::log.info "Copied xiaomi_miot"
+    [ ! -d xiaomi_home ] && cp -rf /hacs/custom_components/xiaomi_home ./ && bashio::log.info "Copied xiaomi_home"
     [ ! -d xiaomi_gateway3 ] && cp -rf /hacs/custom_components/xiaomi_gateway3 ./ && bashio::log.info "Copied xiaomi_gateway3"
     [ ! -d tianqi ] && cp -rf /hacs/custom_components/tianqi ./ && bashio::log.info "Copied tianqi"
     [ ! -d ha_file_explorer ] && cp -rf /hacs/custom_components/ha_file_explorer ./ && bashio::log.info "Copied ha_file_explorer"

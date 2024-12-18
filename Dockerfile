@@ -1,7 +1,7 @@
 ARG VERSION
 FROM homeassistant/home-assistant:${VERSION}
 
-ENV ALWAYS_INSTALL=false
+ENV ALWAYS_INSTALL=true
 
 COPY hacs /etc/services.d/hacs
 
@@ -12,6 +12,7 @@ RUN \
   wget https://hacs.vip/get && \
   DOMAIN=hacs bash get && \
   DOMAIN=xiaomi_miot bash get && \
+  DOMAIN=xiaomi_home bash get && \
   DOMAIN=xiaomi_gateway3 bash get && \
   DOMAIN=tianqi bash get && \
   DOMAIN=ha_file_explorer bash get && \

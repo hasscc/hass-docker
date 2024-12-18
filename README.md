@@ -5,6 +5,7 @@
 
 - [HACS极速版](https://hacs.vip)
 - [Xiaomi Miot Auto](https://github.com/al-one/hass-xiaomi-miot)
+- [Xiaomi Home](https://github.com/XiaoMi/ha_xiaomi_home)
 - [XiaomiGateway3](https://github.com/AlexxIT/XiaomiGateway3)
 - [天气预报](https://github.com/hasscc/tianqi)
 - [文件管理](https://github.com/shaonianzhentan/ha_file_explorer)
@@ -40,7 +41,7 @@ services:
       - /run/dbus:/run/dbus:ro
     environment:
       - TZ=Asia/Shanghai
-      - ALWAYS_INSTALL=false # 可选，如果为true，每次启动都会逐个安装预装集成
+      - ALWAYS_INSTALL=true # 默认为true，每次启动都会逐个安装预装集成
     restart: unless-stopped
     privileged: true
     network_mode: host
