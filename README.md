@@ -7,8 +7,13 @@
 - [Xiaomi Miot](https://github.com/al-one/hass-xiaomi-miot)
 - [Xiaomi Home](https://github.com/XiaoMi/ha_xiaomi_home) _(2024.11+)_
 - [XiaomiGateway3](https://github.com/AlexxIT/XiaomiGateway3)
+- [Sonoff Lan](https://github.com/AlexxIT/SonoffLAN) _(2024.11+)_
+- [Edge TTS](https://github.com/hasscc/hass-edge-tts) _(2024.11+)_
 - [天气预报](https://github.com/hasscc/tianqi)
 - [文件管理](https://github.com/shaonianzhentan/ha_file_explorer)
+- [Bemfa](https://github.com/larry-wong/bemfa) _(2024.11+)_
+- [Midea AC Lan](https://github.com/georgezhao2010/midea_ac_lan) _(2024.11+)_
+- [Midea AC Py](https://github.com/mill1000/midea-ac-py) _(2024.11+)_
 - [AI Conversation Agent](https://github.com/hasscc/ai-conversation) _(2024.9+)_
 
 
@@ -20,9 +25,10 @@ docker run -d \
   --name homeassistant \
   --privileged \
   --restart=unless-stopped \
-  -e TZ=Asia/Shanghai \
   -v /PATH_TO_YOUR_CONFIG:/config \
   -v /run/dbus:/run/dbus:ro \
+  -e TZ=Asia/Shanghai \
+  -e ALWAYS_INSTALL=true \
   --network=host \
   hacn/hacn:stable
 ```
@@ -41,7 +47,8 @@ services:
       - /run/dbus:/run/dbus:ro
     environment:
       - TZ=Asia/Shanghai
-      - ALWAYS_INSTALL=true # 默认为true，每次启动都会逐个预装，否则仅全新HA才会预装
+      - ALWAYS_INSTALL=true  # 默认为true，每次启动都会逐个预装，否则仅全新HA才会预装
+      - ALWAYS_UPGRADE=false # 默认为false，每次启动都会逐个预装最新版本的插件
     restart: unless-stopped
     privileged: true
     network_mode: host
