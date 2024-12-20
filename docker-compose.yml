@@ -1,0 +1,17 @@
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: hacn/hacn:stable
+    build:
+      context: .
+    volumes:
+      - /PATH_TO_YOUR_CONFIG:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /run/dbus:/run/dbus:ro
+    environment:
+      - TZ=Asia/Shanghai
+      - ALWAYS_INSTALL=true  # 默认为true，每次启动都会逐个预装，否则仅全新HA才会预装
+      - ALWAYS_UPGRADE=false # 默认为false，每次启动都会逐个预装最新版本的插件
+    restart: unless-stopped
+    privileged: true
+    network_mode: host

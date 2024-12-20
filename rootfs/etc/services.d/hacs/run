@@ -1,0 +1,33 @@
+#!/usr/bin/with-contenv bashio
+
+hacs_components=/hacs/custom_components
+
+cd /config
+
+bashio::log.info "always_upgrade=$ALWAYS_UPGRADE"
+if [ "$ALWAYS_UPGRADE" = "true" ]; then
+    /install.sh
+    ALWAYS_INSTALL=false
+fi
+
+[ ! -d custom_components ] && cp -rf $hacs_components ./ && bashio::log.info "Copied custom_components to config"
+
+bashio::log.info "always_install=$ALWAYS_INSTALL"
+if [ "$ALWAYS_INSTALL" = "true" ]; then
+    cd custom_components
+    [ ! -d hacs ] && cp -rf $hacs_components/hacs ./ && bashio::log.info "Copied hacs"
+    [ ! -d xiaomi_miot ] && cp -rf $hacs_components/xiaomi_miot ./ && bashio::log.info "Copied xiaomi_miot"
+    [ ! -d xiaomi_home ] && cp -rf $hacs_components/xiaomi_home ./ && bashio::log.info "Copied xiaomi_home"
+    [ ! -d xiaomi_gateway3 ] && cp -rf $hacs_components/xiaomi_gateway3 ./ && bashio::log.info "Copied xiaomi_gateway3"
+    [ ! -d sonoff ] && cp -rf $hacs_components/sonoff ./ && bashio::log.info "Copied sonoff"
+    [ ! -d tianqi ] && cp -rf $hacs_components/tianqi ./ && bashio::log.info "Copied tianqi"
+    [ ! -d edge_tts ] && cp -rf $hacs_components/edge_tts ./ && bashio::log.info "Copied edge_tts"
+    [ ! -d ha_file_explorer ] && cp -rf $hacs_components/ha_file_explorer ./ && bashio::log.info "Copied ha_file_explorer"
+    [ ! -d bemfa ] && cp -rf $hacs_components/bemfa ./ && bashio::log.info "Copied bemfa"
+    [ ! -d midea_ac_lan ] && cp -rf $hacs_components/midea_ac_lan ./ && bashio::log.info "Copied midea_ac_lan"
+    [ ! -d midea_ac ] && cp -rf $hacs_components/midea_ac ./ && bashio::log.info "Copied midea_ac"
+    [ ! -d ai_conversation ] && cp -rf $hacs_components/ai_conversation ./ && bashio::log.info "Copied ai_conversation"
+    cd ..
+fi
+
+sleep infinity
