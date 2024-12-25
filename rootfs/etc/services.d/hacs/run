@@ -27,6 +27,7 @@ if [ "$ALWAYS_INSTALL" = "true" ]; then
     [ ! -d haier ] && cp -rf $hacs_components/haier ./ && bashio::log.info "Copied haier"
     [ ! -d midea_ac_lan ] && cp -rf $hacs_components/midea_ac_lan ./ && bashio::log.info "Copied midea_ac_lan"
     [ ! -d midea_ac ] && cp -rf $hacs_components/midea_ac ./ && bashio::log.info "Copied midea_ac"
+    [ ! -d terncy ] && cp -rf $hacs_components/terncy ./ && bashio::log.info "Copied terncy"
     [ ! -d ai_conversation ] && cp -rf $hacs_components/ai_conversation ./ && bashio::log.info "Copied ai_conversation"
     cd ..
 fi

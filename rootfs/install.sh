@@ -17,5 +17,6 @@ wget https://hacs.vip/get
 [ ! -d /config/custom_components/haier ] && DOMAIN=haier bash get && info "Installed haier"
 [ ! -d /config/custom_components/midea_ac_lan ] && DOMAIN=midea_ac_lan bash get && info "Installed midea_ac_lan"
 [ ! -d /config/custom_components/midea_ac ] && DOMAIN=midea_ac bash get && info "Installed midea_ac"
+[ ! -d /config/custom_components/terncy ] && DOMAIN=terncy bash get && info "Installed terncy"
 
 rm -rf ./get
