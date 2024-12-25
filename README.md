@@ -4,16 +4,17 @@
 > HA启动时会逐个检测是否安装以下集成，如果没有则自动安装，已安装不会覆盖
 
 - [HACS极速版](https://hacs.vip)
-- [Xiaomi Miot](https://github.com/al-one/hass-xiaomi-miot)
-- [Xiaomi Home](https://github.com/XiaoMi/ha_xiaomi_home) _(2024.11+)_
-- [XiaomiGateway3](https://github.com/AlexxIT/XiaomiGateway3)
-- [Sonoff Lan](https://github.com/AlexxIT/SonoffLAN) _(2024.11+)_
-- [Edge TTS](https://github.com/hasscc/hass-edge-tts) _(2024.11+)_
+- [小米 · Xiaomi Miot](https://github.com/al-one/hass-xiaomi-miot)
+- [小米 · Xiaomi Home](https://github.com/XiaoMi/ha_xiaomi_home) _(2024.11+)_
+- [小米 · XiaomiGateway3](https://github.com/AlexxIT/XiaomiGateway3)
+- [易微联 · Sonoff Lan](https://github.com/AlexxIT/SonoffLAN) _(2024.11+)_
 - [天气预报](https://github.com/hasscc/tianqi)
 - [文件管理](https://github.com/shaonianzhentan/ha_file_explorer)
-- [Bemfa](https://github.com/larry-wong/bemfa) _(2024.11+)_
-- [Midea AC Lan](https://github.com/georgezhao2010/midea_ac_lan) _(2024.11+)_
-- [Midea AC Py](https://github.com/mill1000/midea-ac-py) _(2024.11+)_
+- [美的 · Midea AC Lan](https://github.com/georgezhao2010/midea_ac_lan) _(2024.11+)_
+- [美的 · Midea AC Py](https://github.com/mill1000/midea-ac-py) _(2024.11+)_
+- [海尔 · Haier](https://github.com/banto6/haier) _(2024.12+)_
+- [巴法 · Bemfa](https://github.com/larry-wong/bemfa) _(2024.11+)_
+- [Edge TTS](https://github.com/hasscc/hass-edge-tts) _(2024.11+)_
 - [AI Conversation Agent](https://github.com/hasscc/ai-conversation) _(2024.9+)_
 
 
