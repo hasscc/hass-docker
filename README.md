@@ -42,7 +42,7 @@ docker run -d \
 services:
   homeassistant:
     container_name: homeassistant
-    image: hacn/hacn:stable
+    image: ghcr.nju.edu.cn/hasscc/hacn:stable
     volumes:
       - /PATH_TO_YOUR_CONFIG:/config
       - /etc/localtime:/etc/localtime:ro

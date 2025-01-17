@@ -42,30 +42,21 @@ jobs:
           username: ${{ secrets.HACN_USERNAME }}
           password: ${{ secrets.HACN_PASSWORD }}
 
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Build and push
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           push: true
           tags: |
             ${{ secrets.HACN_USERNAME }}/hacn:${{ env.VERSION }}
-          build-args: |
-            VERSION=${{ env.VERSION }}
-          platforms: linux/amd64,linux/arm64,linux/arm/v7
-
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: true
-          tags: |
-            ${{ secrets.DOCKER_USERNAME }}/hacs:${{ env.VERSION }}
+            ghcr.io/${{ github.repository_owner }}/hacn:${{ env.VERSION }}
           build-args: |
             VERSION=${{ env.VERSION }}
           platforms: linux/amd64,linux/arm64,linux/arm/v7
