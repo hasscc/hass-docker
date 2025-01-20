@@ -20,7 +20,7 @@
 
 
 ### 可用镜像
-* ghcr.nju.edu.cn/hacn/hacn
+* ghcr.nju.edu.cn/hasscc/hacn
 * ccr.ccs.tencentyun.com/hacn/hacn
 * registry.cn-hangzhou.aliyuncs.com/hasscc/hacn
 * hacn/hacn
@@ -39,7 +39,7 @@ docker run -d \
   -e TZ=Asia/Shanghai \
   -e ALWAYS_INSTALL=true \
   --network=host \
-  ghcr.nju.edu.cn/hacn/hacn:stable
+  ghcr.nju.edu.cn/hasscc/hacn:stable
 ```
 
 ### Compose 安装
