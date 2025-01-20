@@ -49,6 +49,20 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Login to QCloud CR
+        uses: docker/login-action@v3
+        with:
+          registry: ccr.ccs.tencentyun.com
+          username: ${{ secrets.QCLOUD_CR_USER }}
+          password: ${{ secrets.QCLOUD_CR_PASS }}
+
+      - name: Login to Aliyun CR
+        uses: docker/login-action@v3
+        with:
+          registry: registry.cn-hangzhou.aliyuncs.com
+          username: ${{ secrets.ALIYUN_CR_USER }}
+          password: ${{ secrets.ALIYUN_CR_PASS }}
+
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
@@ -57,6 +71,8 @@ jobs:
           tags: |
             ${{ secrets.HACN_USERNAME }}/hacn:${{ env.VERSION }}
             ghcr.io/${{ github.repository_owner }}/hacn:${{ env.VERSION }}
+            ccr.ccs.tencentyun.com/hacn/hacn:${{ env.VERSION }}
+            registry.cn-hangzhou.aliyuncs.com/${{ github.repository_owner }}/hacn:${{ env.VERSION }}
           build-args: |
             VERSION=${{ env.VERSION }}
           platforms: linux/amd64,linux/arm64,linux/arm/v7

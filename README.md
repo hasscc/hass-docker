@@ -19,6 +19,13 @@
 - [AI Conversation Agent](https://github.com/hasscc/ai-conversation) _(2024.9+)_
 
 
+### 可用镜像
+* ghcr.nju.edu.cn/hacn/hacn
+* ccr.ccs.tencentyun.com/hacn/hacn
+* registry.cn-hangzhou.aliyuncs.com/hasscc/hacn
+* hacn/hacn
+
+
 ### 命令安装
 > https://www.home-assistant.io/installation/linux#install-home-assistant-container
 
@@ -32,7 +39,7 @@ docker run -d \
   -e TZ=Asia/Shanghai \
   -e ALWAYS_INSTALL=true \
   --network=host \
-  hacn/hacn:stable
+  ghcr.nju.edu.cn/hacn/hacn:stable
 ```
 
 ### Compose 安装
