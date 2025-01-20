@@ -71,8 +71,8 @@ jobs:
           tags: |
             ${{ secrets.HACN_USERNAME }}/hacn:${{ env.VERSION }}
             ghcr.io/${{ github.repository_owner }}/hacn:${{ env.VERSION }}
-            ccr.ccs.tencentyun.com/hacn/hacn:${{ env.VERSION }}
             registry.cn-hangzhou.aliyuncs.com/${{ github.repository_owner }}/hacn:${{ env.VERSION }}
+            ccr.ccs.tencentyun.com/hacn/hacn:${{ env.VERSION }}
           build-args: |
             VERSION=${{ env.VERSION }}
           platforms: linux/amd64,linux/arm64,linux/arm/v7
