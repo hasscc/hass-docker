@@ -1,5 +1,9 @@
+# Home Assistant for China
+
 ### 预装集成
 > 本镜像每日更新，可用tag有`stable`、`latest`、`dev`及月度版本如`2024.9`
+>
+> 如果想要加载项功能，可以使用[hass-super](https://github.com/hasscc/hass-super)
 >
 > HA启动时会逐个检测是否安装以下集成，如果没有则自动安装，已安装不会覆盖
 
