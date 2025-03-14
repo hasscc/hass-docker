@@ -1,7 +1,7 @@
 services:
   homeassistant:
     container_name: homeassistant
-    image: hacn/hacn:stable
+    image: ghcr.nju.edu.cn/hasscc/hacn:stable
     build:
       context: .
     volumes:
@@ -15,3 +15,5 @@ services:
     restart: unless-stopped
     privileged: true
     network_mode: host
+    healthcheck:
+      test: [CMD-SHELL, curl -I localhost:8123 || exit 1]
