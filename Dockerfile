@@ -8,8 +8,6 @@ ENV ALWAYS_INSTALL=true \
 COPY rootfs/ /
 
 RUN \
-  chmod a+x /etc/services.d/hacs/run && \
-  chmod a+x /install.sh && \
   mkdir /hacs && cd /hacs && \
   touch home-assistant.log && \
   /install.sh && \
