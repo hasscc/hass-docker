@@ -15,12 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: [stable, latest, '', dev]
+        version: |-
+          ${{ fromJson(
+          github.event_name == 'schedule' && '[""]' || '["stable","latest","","dev"]'
+          ) }}
         addons: ['', -mqtt]
 
-    if: |-
-      github.event_name == 'schedule'
-      || matrix.version == github.event.inputs.version
     steps:
       - name: Determine version
         run: |
