@@ -1,8 +1,11 @@
 ARG VERSION=latest
-FROM homeassistant/home-assistant:${VERSION}
+FROM ghcr.io/home-assistant/home-assistant:${VERSION}
 
+ARG ADDONS
 ENV ALWAYS_INSTALL=true \
     ALWAYS_UPGRADE=false \
+    MQTT_USERNAME=homeassistant \
+    MQTT_PORT=1883 \
     TZ=Asia/Shanghai
 
 COPY rootfs/ /

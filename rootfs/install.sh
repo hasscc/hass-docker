@@ -20,3 +20,15 @@ wget https://hacs.vip/get
 [ ! -d /config/custom_components/terncy ] && DOMAIN=terncy bash get && info "Installed terncy"
 
 rm -rf ./get
+
+if [ -n "${ADDONS:-}" ]; then
+  apk update 2>/dev/null
+fi
+
+if [[ "${ADDONS:-}" == *"mqtt"* ]]; then
+  echo "Installing mosquitto"
+  /addons/mosquitto/install.sh
+fi
+
+rm -rf /var/cache/apk/*
+rm -rf /addons

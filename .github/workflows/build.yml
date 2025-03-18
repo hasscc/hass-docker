@@ -16,10 +16,13 @@ jobs:
     strategy:
       matrix:
         version: [stable, latest, '', dev]
+        addons: ['', -mqtt]
 
+    if: |-
+      github.event_name == 'schedule'
+      || matrix.version == github.event.inputs.version
     steps:
       - name: Determine version
-        id: version_tag
         run: |
           ver="${{ matrix.version }}"
           [ -z "$ver" ] && ver="${{ github.event.inputs.version }}"
@@ -69,10 +72,11 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.HACN_USERNAME }}/hacn:${{ env.VERSION }}
-            ghcr.io/${{ github.repository_owner }}/hacn:${{ env.VERSION }}
-            registry.cn-hangzhou.aliyuncs.com/${{ github.repository_owner }}/hacn:${{ env.VERSION }}
-            ccr.ccs.tencentyun.com/hacn/hacn:${{ env.VERSION }}
+            ${{ secrets.HACN_USERNAME }}/hacn:${{ env.VERSION }}${{ matrix.addons }}
+            ghcr.io/${{ github.repository_owner }}/hacn:${{ env.VERSION }}${{ matrix.addons }}
+            registry.cn-hangzhou.aliyuncs.com/${{ github.repository_owner }}/hacn:${{ env.VERSION }}${{ matrix.addons }}
+            ccr.ccs.tencentyun.com/hacn/hacn:${{ env.VERSION }}${{ matrix.addons }}
           build-args: |
             VERSION=${{ env.VERSION }}
+            ADDONS=${{ matrix.addons }}
           platforms: linux/amd64,linux/arm64,linux/arm/v7
