@@ -10,8 +10,8 @@ if [ -n "$MQTT_USERNAME" ] && [ -n "${MQTT_PASSWORD:-}" ]; then
   anonymous="false"
   pass_file="password_file $PASSWD"
   mosquitto_passwd -c -b $PASSWD "$MQTT_USERNAME" "$MQTT_PASSWORD"
-  chown mosquitto:mosquitto $PASSWD
-  echo "Created password file with user: $MQTT_USERNAME"
+  chown mosquitto: $PASSWD
+  bashio::log.info "Created password file with user: $MQTT_USERNAME"
 fi
 
 [ -f $CONFIG/mosquitto.conf ] || cat <<EOF > $CONFIG/mosquitto.conf
