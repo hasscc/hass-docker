@@ -2,6 +2,7 @@ ARG VERSION=latest
 FROM ghcr.io/home-assistant/home-assistant:${VERSION}
 
 ARG ADDONS
+ARG HUB_DOMAIN=github.com
 ENV ALWAYS_INSTALL=true \
     ALWAYS_UPGRADE=false \
     MQTT_USERNAME=homeassistant \
