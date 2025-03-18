@@ -17,7 +17,7 @@ fi
 [ -f $CONFIG/mosquitto.conf ] || cat <<EOF > $CONFIG/mosquitto.conf
 listener $MQTT_PORT
 persistence_location $CONFIG/data
-allow_anonymous=${anonymous:-true}
+allow_anonymous ${anonymous:-true}
 ${pass_file:-}
 EOF
 
