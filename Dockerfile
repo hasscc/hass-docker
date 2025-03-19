@@ -7,6 +7,8 @@ ENV ALWAYS_INSTALL=true \
     ALWAYS_UPGRADE=false \
     MQTT_USERNAME=homeassistant \
     MQTT_PORT=1883 \
+    NODERED_USERNAME=homeassistant \
+    NODERED_PORT=1880 \
     TZ=Asia/Shanghai
 
 COPY rootfs/ /

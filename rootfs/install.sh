@@ -25,9 +25,14 @@ if [ -n "${ADDONS:-}" ]; then
   apk update 2>/dev/null
 fi
 
-if [[ "${ADDONS:-}" == *"mqtt"* ]]; then
+if [[ "${ADDONS:-}" == *"addons"* ]] || [[ "${ADDONS:-}" == *"mqtt"* ]]; then
   echo "Installing mosquitto"
   /addons/mosquitto/install.sh
+fi
+
+if [[ "${ADDONS:-}" == *"addons"* ]] || [[ "${ADDONS:-}" == *"nodered"* ]]; then
+  echo "Installing node-red"
+  /addons/nodered/install.sh
 fi
 
 rm -rf /var/cache/apk/*

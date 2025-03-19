@@ -1,0 +1,16 @@
+#!/usr/bin/with-contenv bashio
+
+bashio::log.info "Starting Node-RED on port: $NODERED_PORT"
+CONFIG=/config/node-red
+SRVDIR=/etc/services.d/nodered
+
+mkdir -p $CONFIG
+
+if ! bashio::fs.file_exists "$CONFIG/settings.js"; then
+  mv -f $SRVDIR/config/* $CONFIG
+fi
+
+declare -a options
+options+=(--settings "$SRVDIR/config.js")
+
+exec npm start -- "${options[@]}"
