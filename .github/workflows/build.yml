@@ -32,11 +32,10 @@ jobs:
     steps:
       - name: Prepare
         run: |
-          platform=${{ matrix.platform }}
-          echo "PLATFORM_PAIR=${platform//\//-}" >> $GITHUB_ENV
+          artifact=${{ matrix.version }}-${{ matrix.addons }}-${{ matrix.platform }}
+          echo "ARTIFACT_NAME=${artifact//\//-}" >> $GITHUB_ENV
 
       - name: Docker tags
-        shell: bash
         run: |
           ver="${{ matrix.version }}"
           [ -z "$ver" ] && ver="${{ github.event.inputs.version }}"
@@ -63,7 +62,7 @@ jobs:
             ${{ env.ALIYUN_CR_REPO }}
             ${{ env.QCLOUD_CR_REPO }}
           tags: |
-            ${{ env.VERSION }}
+            tmp-${{ env.ARTIFACT_NAME }}
 
       - name: Login to QCloud CR
         uses: docker/login-action@v3
@@ -120,7 +119,7 @@ jobs:
       - name: Upload digest
         uses: actions/upload-artifact@v4
         with:
-          name: digests-${{ env.PLATFORM_PAIR }}
+          name: digests-${{ env.ARTIFACT_NAME }}
           path: ${{ runner.temp }}/digests/*
           if-no-files-found: error
           retention-days: 1
