@@ -72,6 +72,8 @@ services:
 ### 预装扩展
 <a name="addons"></a>
 
+> 镜像Tag`addons`包含以下所有扩展
+
 #### Mosquitto Broker
 - 镜像Tag: `mqtt` `stable-mqtt` `dev-mqtt`
 - 环境变量:
@@ -80,6 +82,16 @@ services:
   MQTT_PASSWORD: homeassistant # 默认为空无需授权，推荐设置
   MQTT_PORT: 1883 # 默认为`1883`
   ```
+
+#### Node-RED
+- 镜像Tag: `nodered` `stable-nodered` `dev-nodered`
+- 环境变量:
+  ```yaml
+  NODERED_USERNAME: homeassistant # 默认为`homeassistant`
+  NODERED_PASSWORD: homeassistant # Node-Red后台密码
+  NODERED_PORT: 1880 # 默认为`1880`
+  ```
+- 访问`http://IP:1880`并登录，需[手动配置HA的长效令牌](https://zachowj.github.io/node-red-contrib-home-assistant-websocket/guide/#configuration)
 
 ### 相关链接
 - [DockerHub](https://hub.docker.com/r/hacn/hacn)
