@@ -37,7 +37,7 @@ jobs:
             tags="type=raw,value=$ver"
           else
             tags="type=raw,value=$ver-${{ matrix.addons }}"
-            if [ "$dev" == "dev" ]; then
+            if [ "$ver" == "dev" ]; then
               tags=$({
                 echo "$tags"
                 echo "type=raw,value=${{ matrix.addons }}"
