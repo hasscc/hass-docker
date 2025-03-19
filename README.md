@@ -3,7 +3,7 @@
 ### 预装集成
 > 本镜像每日更新，可用tag有`stable`、`latest`、`dev`及月度版本如`2024.9`
 >
-> 如果想要加载项功能，可以使用[hass-super](https://github.com/hasscc/hass-super)
+> 如果想要加载项功能，可以使用[hass-super](https://github.com/hasscc/hass-super)，或使用[预装扩展](#addons)镜像
 >
 > HA启动时会逐个检测是否安装以下集成，如果没有则自动安装，已安装不会覆盖
 
@@ -25,8 +25,8 @@
 
 ### 可用镜像
 * ghcr.nju.edu.cn/hasscc/hacn
-* ccr.ccs.tencentyun.com/hacn/hacn
 * registry.cn-hangzhou.aliyuncs.com/hasscc/hacn
+* ccr.ccs.tencentyun.com/hacn/hacn
 * hacn/hacn
 
 
@@ -68,6 +68,18 @@ services:
     healthcheck:
       test: [CMD-SHELL, curl -I localhost:8123 || exit 1]
 ```
+
+### 预装扩展
+<a name="addons"></a>
+
+#### Mosquitto Broker
+- 镜像Tag: `mqtt` `stable-mqtt` `dev-mqtt`
+- 环境变量:
+  ```yaml
+  MQTT_USERNAME: homeassistant # 默认为`homeassistant`
+  MQTT_PASSWORD: homeassistant # 默认为空无需授权，推荐设置
+  MQTT_PORT: 1883 # 默认为`1883`
+  ```
 
 ### 相关链接
 - [DockerHub](https://hub.docker.com/r/hacn/hacn)
