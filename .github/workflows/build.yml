@@ -54,8 +54,7 @@ jobs:
         with:
           images: |
             ${{ env.GITHUB_CR_REPO }}
-          tags: |
-            ${{ env.ALL_TAGS }}
+          tags: ${{ env.ALL_TAGS }}
 
       - name: Checkout code
         uses: actions/checkout@v4
