@@ -1,7 +1,7 @@
 # Home Assistant for China
 
 ### 预装集成
-> 本镜像每日更新，[可用tag](https://github.com/hasscc/hass-docker/pkgs/container/hacn/versions?filters[version_type]=tagged)有`stable`、`latest`、`dev`及月度版本如`2024.9`
+> 本镜像每日更新，[可用标签](https://github.com/hasscc/hass-docker/pkgs/container/hacn/versions?filters[version_type]=tagged)有`stable`、`latest`、`dev`及月度版本如`2024.9`
 >
 > 如果想要加载项功能，可以使用[hass-super](https://github.com/hasscc/hass-super)，或使用[内置扩展](#addons)镜像
 >
@@ -32,7 +32,7 @@
 ### 可用标签
 * `stable` `latest` 最新稳定版
 * `2025.1` `2024.9` 对应HA Core月度版本
-* `addons` `2025.1-addons` 内置插件版本
+* `addons` `2025.1-addons` [内置插件](#addons)版本
 * `mqtt` `2025.2-mqtt` 仅内置MQTT Broker版本
 * `nodered` `2025.3-nodered` 仅内置Node-RED版本
 * `dev` `dev-addons` `dev-mqtt` HA Core开发版
@@ -81,10 +81,10 @@ services:
 ### 内置扩展
 <a name="addons"></a>
 
-> 需要2025.1及以上的镜像，Tag `addons` 包含以下所有扩展
+> 需要2025.1及以上的镜像，标签 `addons` 包含以下所有扩展
 
 #### MQTT Broker
-- 镜像Tag: `mqtt` `stable-mqtt` `dev-mqtt`
+- 镜像标签: `mqtt` `stable-mqtt` `dev-mqtt`
 - 环境变量:
   ```yaml
   MQTT_USERNAME: homeassistant # 默认为`homeassistant`
@@ -93,7 +93,7 @@ services:
   ```
 
 #### Node-RED
-- 镜像Tag: `nodered` `stable-nodered` `dev-nodered`
+- 镜像标签: `nodered` `stable-nodered` `dev-nodered`
 - 环境变量:
   ```yaml
   NODERED_USERNAME: homeassistant # 默认为`homeassistant`
