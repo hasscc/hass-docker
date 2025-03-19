@@ -23,7 +23,7 @@ jobs:
       matrix:
         version: |-
           ${{ fromJson(
-          github.event_name == 'schedule' && '["","stable","latest","dev"]' || '[""]'
+          github.event.inputs.version == '' && '["","stable","latest","dev"]' || '[""]'
           ) }}
         addons: ['', mqtt]
 
