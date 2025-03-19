@@ -45,8 +45,12 @@ jobs:
             fi
           fi
           echo "VERSION=$ver" >> $GITHUB_ENV
-          echo "ALL_TAGS=$tags" >> $GITHUB_ENV
           echo "ALL_TAGS=$tags"
+          {
+            echo 'ALL_TAGS<<EOF'
+            echo "$tags"
+            echo EOF
+          } >> $GITHUB_ENV
 
       - name: Docker meta
         id: meta
