@@ -1,7 +1,7 @@
 # Home Assistant for China
 
 ### 预装集成
-> 本镜像每日更新，可用tag有`stable`、`latest`、`dev`及月度版本如`2024.9`
+> 本镜像每日更新，[可用tag](https://github.com/hasscc/hass-docker/pkgs/container/hacn/versions?filters[version_type]=tagged)有`stable`、`latest`、`dev`及月度版本如`2024.9`
 >
 > 如果想要加载项功能，可以使用[hass-super](https://github.com/hasscc/hass-super)，或使用[预装扩展](#addons)镜像
 >
