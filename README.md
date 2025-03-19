@@ -3,7 +3,7 @@
 ### 预装集成
 > 本镜像每日更新，[可用tag](https://github.com/hasscc/hass-docker/pkgs/container/hacn/versions?filters[version_type]=tagged)有`stable`、`latest`、`dev`及月度版本如`2024.9`
 >
-> 如果想要加载项功能，可以使用[hass-super](https://github.com/hasscc/hass-super)，或使用[预装扩展](#addons)镜像
+> 如果想要加载项功能，可以使用[hass-super](https://github.com/hasscc/hass-super)，或使用[内置扩展](#addons)镜像
 >
 > HA启动时会逐个检测是否安装以下集成，如果没有则自动安装，已安装不会覆盖
 
@@ -69,10 +69,10 @@ services:
       test: [CMD-SHELL, curl -I localhost:8123 || exit 1]
 ```
 
-### 预装扩展
+### 内置扩展
 <a name="addons"></a>
 
-> 镜像Tag`addons`包含以下所有扩展
+> 需要2025.1及以上的镜像，Tag `addons` 包含以下所有扩展
 
 #### Mosquitto Broker
 - 镜像Tag: `mqtt` `stable-mqtt` `dev-mqtt`
