@@ -35,8 +35,7 @@ jobs:
           [ -z "$ver" ] && ver="$(date +%Y).$(date +%-m)"
           tags="type=raw,value=$ver"
           if [ -n "${{ matrix.addons }}" ]; then
-            ver="$ver-${{ matrix.addons }}"
-            tags="$tags\ntype=raw,value=$ver"
+            tags="$tags\ntype=raw,value=$ver-${{ matrix.addons }}"
             if [ "${{ matrix.version }}" == "stable" ]; then
               tags="$tags\ntype=raw,value=${{ matrix.addons }}"
             fi
