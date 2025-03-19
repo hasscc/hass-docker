@@ -29,6 +29,14 @@
 * ccr.ccs.tencentyun.com/hacn/hacn
 * hacn/hacn
 
+### 可用标签
+* `stable` `latest` 最新稳定版
+* `2025.1` `2024.9` 对应HA Core月度版本
+* `addons` `2025.1-addons` 内置插件版本
+* `mqtt` `2025.2-mqtt` 仅内置MQTT Broker版本
+* `nodered` `2025.3-nodered` 仅内置Node-RED版本
+* `dev` `dev-addons` `dev-mqtt` HA Core开发版
+
 
 ### 命令安装
 > https://www.home-assistant.io/installation/linux#install-home-assistant-container
@@ -69,12 +77,13 @@ services:
       test: [CMD-SHELL, curl -I localhost:8123 || exit 1]
 ```
 
+
 ### 内置扩展
 <a name="addons"></a>
 
 > 需要2025.1及以上的镜像，Tag `addons` 包含以下所有扩展
 
-#### Mosquitto Broker
+#### MQTT Broker
 - 镜像Tag: `mqtt` `stable-mqtt` `dev-mqtt`
 - 环境变量:
   ```yaml
@@ -92,6 +101,7 @@ services:
   NODERED_PORT: 1880 # 默认为`1880`
   ```
 - 访问`http://IP:1880`并登录，需[手动配置HA的长效令牌](https://zachowj.github.io/node-red-contrib-home-assistant-websocket/guide/#configuration)
+
 
 ### 相关链接
 - [DockerHub](https://hub.docker.com/r/hacn/hacn)
