@@ -37,7 +37,7 @@ jobs:
             tags="type=raw,value=$ver"
           else
             tags="type=raw,value=$ver-${{ matrix.addons }}"
-            if [ "$ver" == "dev" ]; then
+            if [ "$ver" == "stable" ]; then
               tags=$({
                 echo "$tags"
                 echo "type=raw,value=${{ matrix.addons }}"
@@ -45,7 +45,6 @@ jobs:
             fi
           fi
           echo "VERSION=$ver" >> $GITHUB_ENV
-          echo "ALL_TAGS=$tags"
           {
             echo 'ALL_TAGS<<EOF'
             echo "$tags"
@@ -57,7 +56,10 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
+            ${{ env.DOCKERHUB_REPO }}
             ${{ env.GITHUB_CR_REPO }}
+            ${{ env.ALIYUN_CR_REPO }}
+            ${{ env.QCLOUD_CR_REPO }}
           tags: ${{ env.ALL_TAGS }}
 
       - name: Checkout code
