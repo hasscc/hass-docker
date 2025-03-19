@@ -33,11 +33,15 @@ jobs:
           ver="${{ matrix.version }}"
           [ -z "$ver" ] && ver="${{ github.event.inputs.version }}"
           [ -z "$ver" ] && ver="$(date +%Y).$(date +%-m)"
-          tags="type=raw,value=$ver"
-          if [ -n "${{ matrix.addons }}" ]; then
-            tags="$tags\ntype=raw,value=$ver-${{ matrix.addons }}"
-            if [ "${{ matrix.version }}" == "stable" ]; then
-              tags="$tags\ntype=raw,value=${{ matrix.addons }}"
+          if [ -z "${{ matrix.addons }}" ]; then
+            tags="type=raw,value=$ver"
+          else
+            tags="type=raw,value=$ver-${{ matrix.addons }}"
+            if [ "$dev" == "dev" ]; then
+              tags=$({
+                echo "$tags"
+                echo "type=raw,value=${{ matrix.addons }}"
+              })
             fi
           fi
           echo "VERSION=$ver" >> $GITHUB_ENV
@@ -49,10 +53,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            ${{ env.DOCKERHUB_REPO }}
             ${{ env.GITHUB_CR_REPO }}
-            ${{ env.ALIYUN_CR_REPO }}
-            ${{ env.QCLOUD_CR_REPO }}
           tags: |
             ${{ env.ALL_TAGS }}
 
