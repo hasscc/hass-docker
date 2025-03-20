@@ -12,9 +12,9 @@ on:
 
 env:
   DOCKERHUB_REPO: ${{ secrets.HACN_USERNAME }}/hacn
-  GITHUB_CR_REPO: ghcr.io/${{ github.repository_owner }}/hacn
-  ALIYUN_CR_REPO: registry.cn-hangzhou.aliyuncs.com/${{ github.repository_owner }}/hacn
-  QCLOUD_CR_REPO: ccr.ccs.tencentyun.com/${{ secrets.HACN_USERNAME }}/hacn
+  GITHUB_CR_REPO: ghcr.io/hasscc/hacn
+  ALIYUN_CR_REPO: registry.cn-hangzhou.aliyuncs.com/hasscc/hacn
+  QCLOUD_CR_REPO: ccr.ccs.tencentyun.com/hacn/hacn
 
 jobs:
   build:
@@ -58,8 +58,6 @@ jobs:
           images: |
             ${{ env.DOCKERHUB_REPO }}
             ${{ env.GITHUB_CR_REPO }}
-            ${{ env.ALIYUN_CR_REPO }}
-            ${{ env.QCLOUD_CR_REPO }}
           tags: ${{ env.ALL_TAGS }}
 
       - name: Checkout code
@@ -84,20 +82,6 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Login to Aliyun CR
-        uses: docker/login-action@v3
-        with:
-          registry: registry.cn-hangzhou.aliyuncs.com
-          username: ${{ secrets.ALIYUN_CR_USER }}
-          password: ${{ secrets.ALIYUN_CR_PASS }}
-
-      - name: Login to QCloud CR
-        uses: docker/login-action@v3
-        with:
-          registry: ccr.ccs.tencentyun.com
-          username: ${{ secrets.QCLOUD_CR_USER }}
-          password: ${{ secrets.QCLOUD_CR_PASS }}
-
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
@@ -109,3 +93,27 @@ jobs:
             VERSION=${{ env.VERSION }}
             ADDONS=${{ matrix.addons }}
           platforms: linux/amd64,linux/arm64,linux/arm/v7
+
+  sync:
+    runs-on: ubuntu-latest
+    needs: build
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Sync images
+        uses: hhyasdf/image-sync-action@v1
+        with:
+          auth_file: .sync/auth.yaml
+          images_file: .sync/images.yaml
+        env:
+          ALIYUN_CR_USER: ${{ secrets.ALIYUN_CR_USER }}
+          ALIYUN_CR_PASS: ${{ secrets.ALIYUN_CR_PASS }}
+          QCLOUD_CR_USER: ${{ secrets.QCLOUD_CR_USER }}
+          QCLOUD_CR_PASS: ${{ secrets.QCLOUD_CR_PASS }}
+
+      - name: Pull images
+        run: |
+          docker pull ghcr.nju.edu.cn/hasscc/hass-super:stable
+          docker pull ghcr.nju.edu.cn/hasscc/hass-super:addons

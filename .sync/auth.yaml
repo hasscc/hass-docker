@@ -1,0 +1,6 @@
+registry.cn-hangzhou.aliyuncs.com:
+  username: "${ALIYUN_CR_USER}"
+  password: "${ALIYUN_CR_PASS}"
+ccr.ccs.tencentyun.com:
+  username: "${QCLOUD_CR_USER}"
+  password: "${QCLOUD_CR_PASS}"
