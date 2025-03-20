@@ -35,5 +35,10 @@ if [[ "${ADDONS:-}" == *"addons"* ]] || [[ "${ADDONS:-}" == *"nodered"* ]]; then
   /addons/nodered/install.sh
 fi
 
+if [[ "${ADDONS:-}" == *"addons"* ]] || [[ "${ADDONS:-}" == *"matter"* ]]; then
+  echo "Installing matter-server"
+  /addons/matter/install.sh >> /build.log 2>&1
+fi
+
 rm -rf /var/cache/apk/*
 rm -rf /addons

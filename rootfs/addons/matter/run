@@ -1,0 +1,8 @@
+#!/usr/bin/with-contenv bashio
+
+bashio::log.info "Starting matter-server"
+CONFIG=/config/matter-server
+
+mkdir -p $CONFIG
+
+matter-server --storage-path $CONFIG --paa-root-cert-dir $CONFIG/credentials
