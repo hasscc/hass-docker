@@ -103,7 +103,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Sync images
-        uses: hhyasdf/image-sync-action@v1
+        uses: hhyasdf/image-sync-action@main
         with:
           auth_file: .sync/auth.yaml
           images_file: .sync/images.yaml
