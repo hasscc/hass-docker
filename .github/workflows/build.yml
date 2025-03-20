@@ -43,6 +43,18 @@ jobs:
                 echo "type=raw,value=${{ matrix.addons }}"
               })
             fi
+            if [ "$ver" == "dev" ]; then
+              tags=$({
+                echo "$tags"
+                echo "type=raw,value=$ver-${{ matrix.addons }}-$(date +%Y%m%d)"
+              })
+            fi
+          fi
+          if [ "$ver" == "dev" ]; then
+            tags=$({
+              echo "$tags"
+              echo "type=raw,value=$ver-$(date +%Y%m%d)"
+            })
           fi
           echo "VERSION=$ver" >> $GITHUB_ENV
           {
@@ -97,7 +109,6 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     needs: build
-    timeout-minutes: 60
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -115,5 +126,5 @@ jobs:
 
       - name: Pull images
         run: |
-          docker pull ghcr.nju.edu.cn/hasscc/hass-super:stable
-          docker pull ghcr.nju.edu.cn/hasscc/hass-super:addons
+          docker pull ghcr.nju.edu.cn/hasscc/hacn:stable
+          docker pull ghcr.nju.edu.cn/hasscc/hacn:addons
