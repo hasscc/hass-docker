@@ -35,6 +35,12 @@ jobs:
           [ -z "$ver" ] && ver="$(date +%Y).$(date +%-m)"
           if [ -z "${{ matrix.addons }}" ]; then
             tags="type=raw,value=$ver"
+            if [ "$ver" == "dev" ]; then
+              tags=$({
+                echo "$tags"
+                echo "type=raw,value=$ver-$(date +%Y%m%d)"
+              })
+            fi
           else
             tags="type=raw,value=$ver-${{ matrix.addons }}"
             if [ "$ver" == "stable" ]; then
@@ -49,12 +55,6 @@ jobs:
                 echo "type=raw,value=$ver-${{ matrix.addons }}-$(date +%Y%m%d)"
               })
             fi
-          fi
-          if [ "$ver" == "dev" ]; then
-            tags=$({
-              echo "$tags"
-              echo "type=raw,value=$ver-$(date +%Y%m%d)"
-            })
           fi
           echo "VERSION=$ver" >> $GITHUB_ENV
           {
