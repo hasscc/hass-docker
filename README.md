@@ -26,7 +26,6 @@
 ### 可用镜像
 * ghcr.nju.edu.cn/hasscc/hacn
 * registry.cn-hangzhou.aliyuncs.com/hasscc/hacn
-* ccr.ccs.tencentyun.com/hacn/hacn
 * hacn/hacn
 
 ### 可用标签

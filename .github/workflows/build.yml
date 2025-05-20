@@ -13,8 +13,6 @@ on:
 env:
   DOCKERHUB_REPO: ${{ secrets.HACN_USERNAME }}/hacn
   GITHUB_CR_REPO: ghcr.io/hasscc/hacn
-  ALIYUN_CR_REPO: registry.cn-hangzhou.aliyuncs.com/hasscc/hacn
-  QCLOUD_CR_REPO: ccr.ccs.tencentyun.com/hacn/hacn
 
 jobs:
   build:
