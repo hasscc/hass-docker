@@ -17,7 +17,7 @@
 - [美的 · Midea AC Lan](https://github.com/georgezhao2010/midea_ac_lan) _(2024.11+)_
 - [美的 · Midea AC Py](https://github.com/mill1000/midea-ac-py) _(2024.11+)_
 - [海尔 · Haier](https://github.com/banto6/haier) _(2024.12+)_
-- [巴法 · Bemfa](https://github.com/larry-wong/bemfa) _(2024.11+)_
+- [巴法 · Bemfa](https://github.com/larry-wong/bemfa) _(2024.11+)_ ~~(2025.5)~~
 - [小燕 · Terncy](https://github.com/rxwen/homeassistant-terncy-component) _(2024.12+)_
 - [Edge TTS](https://github.com/hasscc/hass-edge-tts) _(2024.11+)_
 - [AI Conversation Agent](https://github.com/hasscc/ai-conversation) _(2024.9+)_

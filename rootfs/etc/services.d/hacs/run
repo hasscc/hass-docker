@@ -23,7 +23,6 @@ if [ "$ALWAYS_INSTALL" = "true" ]; then
     [ ! -d tianqi ] && cp -rf $hacs_components/tianqi ./ && bashio::log.info "Copied tianqi"
     [ ! -d edge_tts ] && cp -rf $hacs_components/edge_tts ./ && bashio::log.info "Copied edge_tts"
     [ ! -d ha_file_explorer ] && cp -rf $hacs_components/ha_file_explorer ./ && bashio::log.info "Copied ha_file_explorer"
-    [ ! -d bemfa ] && cp -rf $hacs_components/bemfa ./ && bashio::log.info "Copied bemfa"
     [ ! -d haier ] && cp -rf $hacs_components/haier ./ && bashio::log.info "Copied haier"
     [ ! -d midea_ac_lan ] && cp -rf $hacs_components/midea_ac_lan ./ && bashio::log.info "Copied midea_ac_lan"
     [ ! -d midea_ac ] && cp -rf $hacs_components/midea_ac ./ && bashio::log.info "Copied midea_ac"
